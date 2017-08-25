@@ -59,8 +59,12 @@ public class GrowCharacter {
 		}
 		
 		//デバッグ表示
-		TextView textView1 = (TextView)activity.findViewById(R.id.textView1);
+		TextView textView1 = (TextView)activity.findViewById(R.id.levelText);
 		textView1.setText("緯度:" + nowLa + ", 経度:" + nowLong + ", 成長:" + growthStage);
 		updateCnt++;
+	}
+	
+	public int getGrowthStage(){
+		return (int)(growthStage);
 	}
 }
