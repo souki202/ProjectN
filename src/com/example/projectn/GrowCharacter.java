@@ -18,9 +18,8 @@ public class GrowCharacter {
 	private double nowLa = 0.0, nowLong = 0.0;
 	private Integer nowCharaImg = -1;
 	private int updateCnt = 0;
-	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4};
+	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4, R.drawable.chara5, R.drawable.chara6};
 
-	
 	public GrowCharacter(MainActivity mainActivity, Context context) {
 		// TODO Auto-generated constructor stub
 		handler = new Handler();
@@ -44,13 +43,14 @@ public class GrowCharacter {
 		//成長させる
 		growthStage += Math.hypot(nowLa - lastLa, nowLong - lastLong);
 		
-		if((int)(growthStage) >= nowCharaImg && nowCharaImg < 3){
-			nowCharaImg = Math.min((int)(growthStage), 3);
-			
+		if((int)(growthStage) >= nowCharaImg && nowCharaImg < charaImgs.length - 1){
+			//画像の切り替え
+			nowCharaImg = Math.min((int)(growthStage), charaImgs.length - 1);
 			ImageView img = (ImageView)activity.findViewById(R.id.charaImg);
 			img.setImageResource(charaImgs[nowCharaImg]);
 		}
 		
+		//デバッグ表示
 		TextView textView1 = (TextView)activity.findViewById(R.id.textView1);
 		textView1.setText("緯度:" + nowLa + ", 経度:" + nowLong + ", 成長:" + growthStage);
 		updateCnt++;
