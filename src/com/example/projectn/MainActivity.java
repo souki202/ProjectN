@@ -15,7 +15,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements LocationListener  {
 	private Gacha gacha = new Gacha(this, getBaseContext());
-	private GrowCharacter grow = new GrowCharacter(this, getBaseContext());
+	private GrowCharacter grow;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends Activity implements LocationListener  {
 				gacha.execute();
 			}
 		});
-			    
+		grow = new GrowCharacter(this, getBaseContext());    
 	    LocationManager manager = (LocationManager)getSystemService(LOCATION_SERVICE);
 	    manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 	}

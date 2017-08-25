@@ -36,4 +36,13 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_launcher" />
 
+    <ImageView
+        android:id="@+id/charaImg2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chara8" />
+
 </RelativeLayout>

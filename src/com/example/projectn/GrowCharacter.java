@@ -18,13 +18,17 @@ public class GrowCharacter {
 	private double nowLa = 0.0, nowLong = 0.0;
 	private Integer nowCharaImg = -1;
 	private int updateCnt = 0;
-	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4, R.drawable.chara5, R.drawable.chara6};
-
+	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4, R.drawable.chara5, R.drawable.chara6, R.drawable.chara7};
+	private ImageView ultraImg;
+	
 	public GrowCharacter(MainActivity mainActivity, Context context) {
 		// TODO Auto-generated constructor stub
 		handler = new Handler();
 	    this.context = context;
 	    activity = mainActivity;
+	    
+		ultraImg = (ImageView)mainActivity.findViewById(R.id.charaImg2);
+		ultraImg.setAlpha(0.f);
 	}
 
 	public void onLocationChanged(Location location) {
@@ -48,6 +52,10 @@ public class GrowCharacter {
 			nowCharaImg = Math.min((int)(growthStage), charaImgs.length - 1);
 			ImageView img = (ImageView)activity.findViewById(R.id.charaImg);
 			img.setImageResource(charaImgs[nowCharaImg]);
+		}
+		else if(nowCharaImg >= charaImgs.length - 1){
+			float alpha = (1.f - (float)(charaImgs.length - growthStage)) / 2;
+			ultraImg.setAlpha(alpha);
 		}
 		
 		//デバッグ表示
