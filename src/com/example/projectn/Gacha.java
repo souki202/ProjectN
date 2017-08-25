@@ -1,9 +1,7 @@
 package com.example.projectn;
 
 import android.os.Handler;
-
 import com.example.projectn.MainActivity;
-
 import android.content.Context;
 
 public class Gacha {
