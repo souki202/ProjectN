@@ -18,9 +18,8 @@ public class GrowCharacter {
 	private double nowLa = 0.0, nowLong = 0.0;
 	private Integer nowCharaImg = -1;
 	private int updateCnt = 0;
-	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4, R.drawable.chara5};
+	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4, R.drawable.chara5, R.drawable.chara6};
 
-	
 	public GrowCharacter(MainActivity mainActivity, Context context) {
 		// TODO Auto-generated constructor stub
 		handler = new Handler();
