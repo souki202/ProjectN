@@ -24,4 +24,14 @@
         android:layout_marginBottom="31dp"
         android:text="TextView" />
 
+    <ImageView
+        android:id="@+id/charaImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/gacha"
+        android:layout_alignRight="@+id/gacha"
+        android:layout_below="@+id/gacha"
+        android:layout_marginTop="68dp"
+        android:src="@drawable/ic_launcher" />
+
 </RelativeLayout>
