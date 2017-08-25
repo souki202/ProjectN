@@ -54,7 +54,7 @@ public class GrowCharacter {
 			img.setImageResource(charaImgs[nowCharaImg]);
 		}
 		else if(nowCharaImg >= charaImgs.length - 1){
-			float alpha = (1.f - (float)(charaImgs.length - growthStage)) / 2;
+			float alpha = Math.min((1.f - (float)(charaImgs.length - growthStage)) / 2, 1.f);
 			ultraImg.setAlpha(alpha);
 		}
 		
