@@ -13,22 +13,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements LocationListener  {
 	private Gacha gacha = new Gacha(this, getBaseContext());
 	private GrowCharacter grow;
+	int suji;
+	private String[] rea = new String[]{"SR","SSR","NR","SEACRET","N","R","UR","L"};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		grow = new GrowCharacter(this, getBaseContext()); 
-		
 		Button okButton = (Button)findViewById(R.id.gacha);
 		okButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				gacha.execute();
-			}
+						suji = gacha.execute();
+				        TextView textView = new TextView(getApplicationContext());
+				        textView.setText(" "+rea[suji]);
+				        textView.setTextSize(100f);
+				        setContentView(textView);
+				    }
+
+			
 		});
 		
 		//ステータス画面

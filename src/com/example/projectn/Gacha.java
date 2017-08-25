@@ -15,7 +15,9 @@ public class Gacha {
 	}
 
 	public int execute() {
-		
-		return 0;
+		double rand = Math.random()*9;
+		int num= (int)rand;
+
+		return num;
 	}
 }
