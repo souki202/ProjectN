@@ -53,7 +53,8 @@ public class GrowCharacter {
 			ImageView img = (ImageView)activity.findViewById(R.id.charaImg);
 			img.setImageResource(charaImgs[nowCharaImg]);
 		}
-		else if(nowCharaImg >= charaImgs.length - 1){
+		//‹†‹Éi‰»Œ`
+		if(nowCharaImg >= charaImgs.length - 1){
 			float alpha = Math.min((1.f - (float)(charaImgs.length - growthStage)) / 2, 1.f);
 			ultraImg.setAlpha(alpha);
 		}
