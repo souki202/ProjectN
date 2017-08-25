@@ -3,6 +3,7 @@ package com.example.projectn;
 import com.example.projectn.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,6 +22,7 @@ public class MainActivity extends Activity implements LocationListener  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		grow = new GrowCharacter(this, getBaseContext()); 
 		
 		Button okButton = (Button)findViewById(R.id.gacha);
 		okButton.setOnClickListener(new OnClickListener() {
@@ -28,7 +30,17 @@ public class MainActivity extends Activity implements LocationListener  {
 				gacha.execute();
 			}
 		});
-		grow = new GrowCharacter(this, getBaseContext());    
+		
+		//ステータス画面
+		Button statusButton = (Button)findViewById(R.id.statusButton1);
+		statusButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, StatusActivity.class);
+				intent.putExtra("growthStage", grow.getGrowthStage());
+				startActivity(intent);
+			}
+		});
+   
 	    LocationManager manager = (LocationManager)getSystemService(LOCATION_SERVICE);
 	    manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 	}

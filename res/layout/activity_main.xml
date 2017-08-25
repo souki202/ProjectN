@@ -17,7 +17,7 @@
         android:text="10連 無料ガチャ" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/levelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -29,7 +29,7 @@
         android:id="@+id/charaImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/levelText"
         android:layout_below="@+id/gacha"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -40,10 +40,18 @@
         android:id="@+id/charaImg2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/levelText"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/charaImg"
         android:scaleType="fitCenter"
         android:src="@drawable/chara8" />
+
+    <Button
+        android:id="@+id/statusButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/charaImg"
+        android:layout_alignParentBottom="true"
+        android:text="ステータス画面" />
 
 </RelativeLayout>
