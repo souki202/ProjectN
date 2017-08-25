@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements LocationListener  {
 	private Integer nowCharaImg = -1;
 	private int updateCnt = 0;
 	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4};
-	private Gacha gacha = new Gacha(this);
+	private Gacha gacha = new Gacha(this, getBaseContext());
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
