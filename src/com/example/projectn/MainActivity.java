@@ -1,8 +1,5 @@
 package com.example.projectn;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import com.example.projectn.R;
 
 import android.app.Activity;
