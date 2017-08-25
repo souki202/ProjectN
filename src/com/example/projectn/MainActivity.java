@@ -1,8 +1,13 @@
 package com.example.projectn;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import com.example.projectn.R;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +26,9 @@ public class MainActivity extends Activity implements LocationListener  {
 	private float growthStage = 0.f;
 	private double lastLa = 0.0, lastLong = 0.0;
 	private double nowLa = 0.0, nowLong = 0.0;
+	private Integer nowCharaImg = -1;
+	private int updateCnt = 0;
+	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +54,7 @@ public class MainActivity extends Activity implements LocationListener  {
 			    
 	    LocationManager manager = (LocationManager)getSystemService(LOCATION_SERVICE);
 	    manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-
+	    
 	}
 
 	@Override
@@ -75,18 +84,25 @@ public class MainActivity extends Activity implements LocationListener  {
 		nowLa = location.getLatitude();
 		nowLong = location.getLongitude();
 		//‰Šúó‘Ô‚¾‚¯‹}Œƒ‚É¬’·‚·‚é‚Ì‚ð–hŽ~
-		if(lastLa == 0.0 && lastLong == 0.0){
+		if(updateCnt == 0){
 			lastLa = nowLa;
 			lastLong = nowLong;
 		}
-		
+
 		//¬’·‚³‚¹‚é
 		growthStage += Math.hypot(nowLa - lastLa, nowLong - lastLong);
 		
+		if((int)(growthStage) >= nowCharaImg && nowCharaImg < 4){
+			nowCharaImg = (int)(growthStage);
+			
+			ImageView img = (ImageView)findViewById(R.id.charaImg);
+			img.setImageResource(charaImgs[nowCharaImg]);
+		}
+		
+		
 		TextView textView1 = (TextView)findViewById(R.id.textView1);
 		textView1.setText("ˆÜ“x:" + nowLa + ", Œo“x:" + nowLong + ", ¬’·:" + growthStage);
-		
-		
+		updateCnt++;
 	}
 
 	@Override
