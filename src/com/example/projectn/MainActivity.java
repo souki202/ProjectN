@@ -70,17 +70,14 @@ public class MainActivity extends Activity implements LocationListener  {
 	@Override
 	public void onLocationChanged(Location location) {
 		//ç¿ïWéÊìæ
-		if(nowLa == 0.0 && nowLong == 0.0){
-			nowLa = location.getLatitude();
-			nowLong = location.getLongitude();
+		lastLa = nowLa;
+		lastLong = nowLong;
+		nowLa = location.getLatitude();
+		nowLong = location.getLongitude();
+		//èâä˙èÛë‘ÇæÇØã}åÉÇ…ê¨í∑Ç∑ÇÈÇÃÇñhé~
+		if(lastLa == 0.0 && lastLong == 0.0){
 			lastLa = nowLa;
 			lastLong = nowLong;
-		}
-		else{
-			lastLa = nowLa;
-			lastLong = nowLong;
-			nowLa = location.getLatitude();
-			nowLong = location.getLongitude();
 		}
 		
 		//ê¨í∑Ç≥ÇπÇÈ
