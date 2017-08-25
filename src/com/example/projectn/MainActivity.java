@@ -29,6 +29,7 @@ public class MainActivity extends Activity implements LocationListener  {
 	private Integer nowCharaImg = -1;
 	private int updateCnt = 0;
 	private int[] charaImgs = new int[]{R.drawable.chara1, R.drawable.chara2, R.drawable.chara3, R.drawable.chara4};
+	private Gacha gacha = new Gacha(this);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +39,7 @@ public class MainActivity extends Activity implements LocationListener  {
 		Button okButton = (Button)findViewById(R.id.gacha);
 		okButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				LinearLayout linearLayout = new LinearLayout(getBaseContext());     //１．リニアレイアウトをインスタンス化
-			    linearLayout.setBackgroundColor(Color.WHITE);           //２．背景色の指定
-			    
-			    setContentView(linearLayout);                           //３．レイアウトをコンテントに表示する
-				
-			    //コードでテキストビューを生成＆セット
-		        TextView textView = new TextView(getBaseContext());                 //４．テキストビューのインスタンスを生成
-		        textView.setText("TEST OK!");                           //５．表示する文字をセット
-		        textView.setTextSize(50);                               //６．テキストのサイズをセット
-		        textView.setTextColor(Color.RED);                       //７．テキストの色をセット
-		        linearLayout.addView(textView);                         //８．レイアウトにテキストビューを追加して表示する
+				gacha.execute();
 			}
 		});
 			    
