@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-//
 public class MainActivity extends Activity implements LocationListener  {
 	private float growthStage = 0.f;
 	private double lastLa = 0.0, lastLong = 0.0;
