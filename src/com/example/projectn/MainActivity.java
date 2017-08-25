@@ -17,7 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements LocationListener  {
-
+	private float growthStage = 0.f;
+	private double lastLa = 0.0, lastLong = 0.0;
+	private double nowLa = 0.0, nowLong = 0.0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,15 +69,27 @@ public class MainActivity extends Activity implements LocationListener  {
 
 	@Override
 	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
-		double latitude, longtitude;
+		//座標取得
+		if(nowLa == 0.0 && nowLong == 0.0){
+			nowLa = location.getLatitude();
+			nowLong = location.getLongitude();
+			lastLa = nowLa;
+			lastLong = nowLong;
+		}
+		else{
+			lastLa = nowLa;
+			lastLong = nowLong;
+			nowLa = location.getLatitude();
+			nowLong = location.getLongitude();
+		}
 		
-		latitude = location.getLatitude();
-		longtitude = location.getLongitude();
+		//成長させる
+		growthStage += Math.hypot(nowLa - lastLa, nowLong - lastLong);
 		
-		TextView textView2 = (TextView)findViewById(R.id.textView1);
-		textView2.setText("緯度:" + latitude + ", 経度:" + longtitude);
-
+		TextView textView1 = (TextView)findViewById(R.id.textView1);
+		textView1.setText("緯度:" + nowLa + ", 経度:" + nowLong + ", 成長:" + growthStage);
+		
+		
 	}
 
 	@Override
